@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - 0zero Paradize</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/shared_styles.css') }}" rel="stylesheet">
+</head>
+<body class="text-white">
+    {% include 'navigation.html' %}
+    
+    <div class="stars"></div>
+    <div class="pixelated-fire"></div>
+    
+    <div class="content">
+        <h1 class="text-4xl font-bold mb-6 text-purple-500">Admin Panel</h1>
+        <form action="{{ url_for('admin') }}" method="POST" enctype="multipart/form-data" class="bg-gray-900 p-6 rounded-lg">
+            <div class="mb-4">
+                <label for="item_type" class="block text-purple-400 mb-2">Item Type</label>
+                <select name="item_type" id="item_type" class="w-full bg-gray-800 text-white rounded px-3 py-2">
+                    <option value="tool">Tool</option>
+                    <option value="combo">Combo</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="title" class="block text-purple-400 mb-2">Title</label>
+                <input type="text" name="title" id="title" required class="w-full bg-gray-800 text-white rounded px-3 py-2">
+            </div>
+            <div class="mb-4">
+                <label for="description" class="block text-purple-400 mb-2">Description</label>
+                <textarea name="description" id="description" required class="w-full bg-gray-800 text-white rounded px-3 py-2"></textarea>
+            </div>
+            <div class="mb-4">
+                <label for="image" class="block text-purple-400 mb-2">Image</label>
+                <input type="file" name="image" id="image" required class="w-full bg-gray-800 text-white rounded px-3 py-2">
+            </div>
+            <div id="combo_fields" style="display: none;">
+                <div class="mb-4">
+                    <label for="thumbnail" class="block text-purple-400 mb-2">Thumbnail</label>
+                    <input type="file" name="thumbnail" id="thumbnail" class="w-full bg-gray-800 text-white rounded px-3 py-2">
+                </div>
+                <div class="mb-4">
+                    <label for="download_file" class="block text-purple-400 mb-2">Download File</label>
+                    <input type="file" name="download_file" id="download_file" class="w-full bg-gray-800 text-white rounded px-3 py-2">
+                </div>
+                <div class="mb-4">
+                    <label for="media_type" class="block text-purple-400 mb-2">Media Type</label>
+                    <select name="media_type" id="media_type" class="w-full bg-gray-800 text-white rounded px-3 py-2">
+                        <option value="none">None</option>
+                        <option value="video">Video</option>
+                        <option value="youtube">YouTube</option>
+                    </select>
+                </div>
+                <div id="video_field" class="mb-4" style="display: none;">
+                    <label for="video_file" class="block text-purple-400 mb-2">Video File</label>
+                    <input type="file" name="video_file" id="video_file" class="w-full bg-gray-800 text-white rounded px-3 py-2">
+                </div>
+                <div id="youtube_field" class="mb-4" style="display: none;">
+                    <label for="youtube_link" class="block text-purple-400 mb-2">YouTube Link</label>
+                    <input type="text" name="youtube_link" id="youtube_link" class="w-full bg-gray-800 text-white rounded px-3 py-2">
+                </div>
+            </div>
+            <button type="submit" class="pixelated-button">Add Item</button>
+        </form>
+    </div>
+
+    {% include 'footer.html' %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="{{ url_for('static', filename='js/star_background.js') }}"></script>
+    <script>
+        document.getElementById('item_type').addEventListener('change', function() {
+            var comboFields = document.getElementById('combo_fields');
+            if (this.value === 'combo') {
+                comboFields.style.display = 'block';
+            } else {
+                comboFields.style.display = 'none';
+            }
+        });
+
+        document.getElementById('media_type').addEventListener('change', function() {
+            var videoField = document.getElementById('video_field');
+            var youtubeField = document.getElementById('youtube_field');
+            if (this.value === 'video') {
+                videoField.style.display = 'block';
+                youtubeField.style.display = 'none';
+            } else if (this.value === 'youtube') {
+                videoField.style.display = 'none';
+                youtubeField.style.display = 'block';
+            } else {
+                videoField.style.display = 'none';
+                youtubeField.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

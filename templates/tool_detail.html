@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ tool.title }} - 0zero Paradize</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/shared_styles.css') }}" rel="stylesheet">
+</head>
+<body class="text-white">
+    {% include 'navigation.html' %}
+    
+    <div class="stars"></div>
+    <div class="pixelated-fire"></div>
+    
+    <div class="content">
+        <div class="card max-w-4xl mx-auto">
+            <img src="{{ url_for('static', filename='uploads/' + tool.image) }}" alt="{{ tool.title }}" class="w-full h-64 object-cover mb-6">
+            <h1 class="text-3xl font-bold mb-4">{{ tool.title }}</h1>
+            <p class="text-gray-300 mb-6">{{ tool.description }}</p>
+            <!-- Add any additional tool details or features here -->
+        </div>
+    </div>
+
+    {% include 'footer.html' %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="{{ url_for('static', filename='js/star_background.js') }}"></script>
+</body>
+</html>

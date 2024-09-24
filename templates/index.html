@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0zero Paradize</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/shared_styles.css') }}" rel="stylesheet">
+</head>
+<body class="text-white">
+    {% include 'navigation.html' %}
+    
+    <div class="stars"></div>
+    <div class="pixelated-fire"></div>
+    
+    <div class="relative z-10 flex items-center justify-center min-h-screen">
+        <div class="text-center">
+            <h1 class="text-5xl font-bold mb-6 text-purple-500">Welcome to 0zero Paradize</h1>
+            <p class="text-xl mb-8">Where you can find tools, combo lists, cracking programs, and more.</p>
+            <a href="/tools" class="pixelated-button">Explore Tools</a>
+        </div>
+    </div>
+
+    {% include 'footer.html' %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="{{ url_for('static', filename='js/star_background.js') }}"></script>
+</body>
+</html>

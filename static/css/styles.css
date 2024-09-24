@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+  --bg-primary: #333333;
+  --text-primary: #ffffff;
+  --accent-purple: #8a2be2;
+  --accent-pink: #ff69b4;
+  --accent-darkblue: #00008b;
+  --accent-blue: #1e90ff;
+  --accent-cyan: #00ffff;
+}
+
+body {
+  font-family: 'Press Start 2P', cursive;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.pixelated {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.neon-text {
+  text-shadow: 0 0 5px var(--accent-cyan), 0 0 10px var(--accent-blue), 0 0 15px var(--accent-purple);
+}
+
+.neon-border {
+  box-shadow: 0 0 5px var(--accent-cyan), 0 0 10px var(--accent-blue), 0 0 15px var(--accent-purple);
+}
+
+.pixel-fire {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  background-image: url('/static/images/pixel-fire.png');
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  animation: fireAnimation 0.5s steps(4) infinite;
+}
+
+@keyframes fireAnimation {
+  0% { background-position: 0 0; }
+  100% { background-position: -256px 0; }
+}
+
+.gradient-bg {
+  background: linear-gradient(45deg, var(--accent-purple), var(--accent-pink), var(--accent-darkblue), var(--accent-blue), var(--accent-cyan));
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.btn-pixel {
+  background-color: var(--accent-darkblue);
+  color: var(--text-primary);
+  border: none;
+  padding: 10px 20px;
+  font-family: 'Press Start 2P', cursive;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-pixel:hover {
+  background-color: var(--accent-blue);
+  transform: translateY(-2px);
+}
+
+.card {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 2px solid var(--accent-cyan);
+  border-radius: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px var(--accent-cyan);
+}

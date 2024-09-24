@@ -1,0 +1,93 @@
+body {
+    background: #333333;
+    overflow-x: hidden;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.pixelated-fire {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-image: linear-gradient(to right, #800080, #4B0082, #0000FF, #00FFFF);
+    animation: fireAnimation 0.5s infinite;
+    z-index: -1;
+}
+
+@keyframes fireAnimation {
+    0% { clip-path: polygon(0 100%, 100% 100%, 100% 80%, 90% 75%, 80% 85%, 70% 70%, 60% 80%, 50% 65%, 40% 75%, 30% 60%, 20% 70%, 10% 55%, 0 70%); }
+    50% { clip-path: polygon(0 100%, 100% 100%, 100% 75%, 90% 80%, 80% 70%, 70% 85%, 60% 65%, 50% 80%, 40% 60%, 30% 75%, 20% 55%, 10% 70%, 0 65%); }
+    100% { clip-path: polygon(0 100%, 100% 100%, 100% 80%, 90% 75%, 80% 85%, 70% 70%, 60% 80%, 50% 65%, 40% 75%, 30% 60%, 20% 70%, 10% 55%, 0 70%); }
+}
+
+.pixelated-button {
+    position: relative;
+    overflow: hidden;
+    background-color: #4B0082;
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.pixelated-button::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background-image: linear-gradient(to right, #800080, #4B0082, #0000FF, #00FFFF);
+    animation: buttonFireAnimation 0.5s infinite;
+}
+
+@keyframes buttonFireAnimation {
+    0% { clip-path: polygon(0 100%, 100% 100%, 100% 0, 90% 33%, 80% 0, 70% 33%, 60% 0, 50% 33%, 40% 0, 30% 33%, 20% 0, 10% 33%, 0 0); }
+    50% { clip-path: polygon(0 100%, 100% 100%, 100% 33%, 90% 0, 80% 33%, 70% 0, 60% 33%, 50% 0, 40% 33%, 30% 0, 20% 33%, 10% 0, 0 33%); }
+    100% { clip-path: polygon(0 100%, 100% 100%, 100% 0, 90% 33%, 80% 0, 70% 33%, 60% 0, 50% 33%, 40% 0, 30% 33%, 20% 0, 10% 33%, 0 0); }
+}
+
+.pixelated-button:hover {
+    background-color: #5B0092;
+    color: #FFFFFF;
+    text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    padding: 2rem;
+}
+
+.card {
+    background-color: rgba(75, 0, 130, 0.7);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+h1, h2, h3 {
+    color: #800080;
+}

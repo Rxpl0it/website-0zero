@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ combo.title }} - 0zero Paradize</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/shared_styles.css') }}" rel="stylesheet">
+</head>
+<body class="text-white">
+    {% include 'navigation.html' %}
+    
+    <div class="stars"></div>
+    <div class="pixelated-fire"></div>
+    
+    <div class="content">
+        <div class="card max-w-4xl mx-auto">
+            <img src="{{ url_for('static', filename='uploads/' + combo.thumbnail) }}" alt="{{ combo.title }}" class="w-full h-64 object-cover mb-6">
+            <h1 class="text-3xl font-bold mb-4">{{ combo.title }}</h1>
+            <p class="text-gray-300 mb-6">{{ combo.description }}</p>
+            
+            {% if combo.download_file %}
+            <a href="{{ url_for('download_file', combo_id=combo.id) }}" class="pixelated-button mb-4">Download File</a>
+            {% endif %}
+
+            {% if combo.media_type == 'video' %}
+            <div class="mt-6">
+                <video controls class="w-full rounded-lg">
+                    <source src="{{ url_for('static', filename='uploads/' + combo.media_content) }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            {% elif combo.media_type == 'youtube' %}
+            <div class="mt-6 aspect-w-16 aspect-h-9">
+                <iframe src="https://www.youtube.com/embed/{{ combo.media_content.split('v=')[-1] }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full rounded-lg"></iframe>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {% include 'footer.html' %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="{{ url_for('static', filename='js/star_background.js') }}"></script>
+</body>
+</html>
